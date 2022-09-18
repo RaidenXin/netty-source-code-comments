@@ -401,8 +401,10 @@ public final class NioEventLoop extends SingleThreadEventLoop {
 
     @Override
     protected void run() {
+        //死循环 一直轮询以及准备就绪的的连接数量
         for (;;) {
             try {
+                //
                 switch (selectStrategy.calculateStrategy(selectNowSupplier, hasTasks())) {
                     case SelectStrategy.CONTINUE:
                         continue;

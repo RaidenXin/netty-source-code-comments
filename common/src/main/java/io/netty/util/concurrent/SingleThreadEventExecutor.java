@@ -126,8 +126,10 @@ public abstract class SingleThreadEventExecutor extends AbstractScheduledEventEx
             @Override
             public void run() {
                 boolean success = false;
+                //跟新最后一次执行任务的时间
                 updateLastExecutionTime();
                 try {
+                    //核心方法
                     SingleThreadEventExecutor.this.run();
                     success = true;
                 } catch (Throwable t) {
